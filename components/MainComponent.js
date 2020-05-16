@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import Marketplace from './MarketplaceComponent';
 import MarketInfo from './MarketInfoComponent';
 import { MARKETPLACE } from '../shared/marketplace';
+import { createStackNavigator } from 'react-navigation';
+
+
+const DirectoryNavigator = createStackNavigator(
+    {
+        Marketplace: { screen: Marketplace },
+        MarketInfo: { screen: MarketInfo }
+    }, 
+    {
+        initialRouteName: 'Marketplace',
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+);
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            marketplace: MARKETPLACE,
-            selectedMarketplace: null
-        };
-    }
-
-
-    onMarketSelect(marketplaceId) {
-        this.setState({ selectedMarketplace: marketplaceId });
-    }
-
     render() {
         return (
-        <View style={{ flex: 1 }}>
-            <Marketplace marketplace={this.state.marketplace} onPress={marketplaceId => this.onMarketSelect(marketplaceId)} />
-            <MarketInfo marketplace={this.state.marketplace.filter(marketplace => marketplace.id === this.state.selectedMarketplace)[0]} />
+        <View style={{ 
+            flex: 1, 
+            paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight
+            }}>
+            <DirectoryNavigator />
         </View>
         )}
 }

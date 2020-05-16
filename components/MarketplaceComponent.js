@@ -1,27 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import { MARKETPLACE } from '../shared/marketplace'
 
-function Marketplace(props) {
+class Marketplace extends Component {
 
-    const renderDirectoryItem = ({item}) => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            marketplace: MARKETPLACE
+        }
+    }
+
+    static navigationOptions = {
+        title: 'Marketplace'
+    }
+
+    render() {
+
+        const { navigate } = this.props.navigation;
+        const renderDirectoryItem = ({ item }) => {
+            return (
+                <ListItem
+                    title={item.name}
+                    subtitle={item.description}
+                    onPress={() => navigate('MarketInfo', {marketplaceId: item.id})}
+                    leftAvatar={{ source: require('./images/coffeestudy.jpg') }}
+                />
+            );
+        };
+
         return (
-            <ListItem
-                title={item.name}
-                subtitle={item.description}
-                onPress={() => props.onPress(item.id)}
-                leftAvatar={{ source: require('./images/coffeestudy.jpg')}}
+            <FlatList
+                data={this.state.marketplace}
+                renderItem={renderDirectoryItem}
+                keyExtractor={item => item.id.toString()}
             />
         );
-    };
-
-    return (
-        <FlatList 
-            data={props.marketplace}
-            renderItem={renderDirectoryItem}
-            keyExtractor={item => item.id.toString()}
-        />
-    );
+    }
 }
 
 export default Marketplace;
