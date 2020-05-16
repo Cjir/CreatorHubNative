@@ -22,7 +22,7 @@ class Marketplace extends Component {
         const renderDirectoryItem = ({ item }) => {
             return (
                 <ListItem
-                    title={item.name}
+                    title={item.title}
                     subtitle={item.description}
                     onPress={() => navigate('MarketInfo', {marketplaceId: item.id})}
                     leftAvatar={{ source: require('./images/coffeestudy.jpg') }}

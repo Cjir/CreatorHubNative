@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
-import { MARKETPLACE } from '../shared/marketplace'
+import { MARKETPLACE } from '../shared/marketplace';
 
 function RenderMarket({market}) {   
     if (market) {

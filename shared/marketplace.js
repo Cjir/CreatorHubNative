@@ -4,6 +4,7 @@ export const MARKETPLACE = [
             name: 'Creator Hub Logo',
             image: 'assets/images/honey-jar.jpg',
             title: 'Sweet Tooth Honey',
+            featured: true,
             description: 'Organic and Eco focus honey! Try our Strawberry infused blend.'
         },
         {
@@ -11,6 +12,7 @@ export const MARKETPLACE = [
             name: 'Creator Hub Logo',
             image: 'assets/images/hipster-shoes.jpg',
             title: 'Swift Travel',
+            featured: false,
             description: 'Comfort, Light, and Simple. Shoe\'s made for you!'
         },
         {
@@ -18,6 +20,7 @@ export const MARKETPLACE = [
             name: 'Creator Hub Logo',
             image: 'assets/images/black-and-white-clay.jpg',
             title: 'Craft Clay Pottery',
+            featured: false,
             description: 'Precision and Care, hand crafted pottery.'
         },
         {
@@ -25,6 +28,7 @@ export const MARKETPLACE = [
             name: 'Creator Hub Logo',
             image: 'assets/images/bath-oils.jpg',
             title: 'Daylight Oils',
+            featured: false,
             description: 'Relaxing must include both the mind and body!'
         }
 ]
