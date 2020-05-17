@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Platform } from 'react-native';
 import Home from './HomeComponent';
+import BlogFeed from './BlogFeedComponent';
+import BlogPage from './BlogPageComponent';
 import Marketplace from './MarketplaceComponent';
 import MarketInfo from './MarketInfoComponent';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
@@ -15,7 +17,26 @@ const MarketplaceNavigator = createStackNavigator(
         initialRouteName: 'Marketplace',
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#ff9b71'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+);
+
+const BlogFeedNavigator = createStackNavigator(
+    {
+        BlogFeed: { screen: BlogFeed },
+        BlogPage: { screen: BlogPage }
+    }, 
+    {
+        initialRouteName: 'BlogFeed',
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#ff9b71'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -26,13 +47,13 @@ const MarketplaceNavigator = createStackNavigator(
 );
 
 const HomeNavigator = createStackNavigator(
-    {
+    {   
         Home: { screen: Home }
     },
     {
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#ff9b71'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -45,10 +66,11 @@ const HomeNavigator = createStackNavigator(
 const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
-        Marketplace: { screen: MarketplaceNavigator }
+        Marketplace: { screen: MarketplaceNavigator },
+        BlogFeed: { screen: BlogFeedNavigator }
     },
     {
-        drawerBackgroundColor: '#CEC8FF'
+        drawerBackgroundColor: '#F9FAFC'
     }
 );
 

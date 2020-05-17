@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import { MARKETPLACE } from '../shared/marketplace';
+import { BLOGFEED } from '../shared/blogfeed';
 
-class Marketplace extends Component {
+class BlogFeed extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            marketplace: MARKETPLACE
+            blogfeed: BLOGFEED
         }
     }
 
     static navigationOptions = {
-        title: 'Marketplace'
+        title: 'Blogfeed'
     }
 
     render() {
@@ -24,15 +24,15 @@ class Marketplace extends Component {
                 <ListItem
                     title={item.title}
                     subtitle={item.description}
-                    onPress={() => navigate('MarketInfo', {marketplaceId: item.id})}
-                    leftAvatar={{ source: require('./images/coffeestudy.jpg') }}
+                    onPress={() => navigate('BlogPage', {blogId: item.id})}
+                    leftAvatar={{ source: require('./images/workplace.png') }}
                 />
             );
         };
 
         return (
             <FlatList
-                data={this.state.marketplace}
+                data={this.state.blogfeed}
                 renderItem={renderDirectoryItem}
                 keyExtractor={item => item.id.toString()}
             />
@@ -40,4 +40,4 @@ class Marketplace extends Component {
     }
 }
 
-export default Marketplace;
+export default BlogFeed;
